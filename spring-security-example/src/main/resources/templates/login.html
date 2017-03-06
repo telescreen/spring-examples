@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Spring Security Login</title>
+    <link rel="stylesheet" data-th-href="@{/static/node_modules/bootstrap/dist/css/bootstrap.css}">
+    <style>
+        html, body {
+            min-height: 100%;
+            background-color: #EAEAEA;
+        }
+
+        .container {
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .vertical-align {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        h4 {
+            background-color: #337ab7;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+
+        form {
+            background-color: white;
+            padding: 15px;
+        }
+
+        .form-error {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row vertical-align">
+        <div class="col-xs-6 col-md-6 col-md-offset-3">
+            <h4>Login to get started</h4>
+            <form data-th-action="@{/login}" method="post">
+                <p class="text-center">You don't have an account? <a data-th-href="@{/registration}">Register now!</a></p>
+                <h5 class="form-error" data-th-if="${param.error}">
+                    Invalid username or password
+                </h5>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" class="form-control" type="text" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" class="form-control" type="password" name="password" placeholder="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

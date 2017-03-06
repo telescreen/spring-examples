@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: development
+debug: true
+
+---
+spring:
+  profiles: development
+  thymeleaf:
+    mode: HTML
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    check-template-location: true
+  datasource:
+    platform: postgresql
+    url: jdbc:postgresql://stark:5432/springsec
+    username: tal
+    password: taltaltal
+  jpa:
+    show-sql: true

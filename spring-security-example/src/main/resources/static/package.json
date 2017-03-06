@@ -1,0 +1,13 @@
+{
+  "name": "ossram",
+  "version": "1.0.0",
+  "description": "OSS RAM static management",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bui Hong Ha",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="/static/node_modules/dropzone/dist/dropzone.css">
+    <script type="text/javascript" src="/static/node_modules/dropzone/dist/dropzone.js"></script>
+</head>
+<body>
+<div data-th-if="${message}">
+    <h2 data-th-text="${message}"></h2>
+</div>
+<form class="dropzone" method="POST" enctype="multipart/form-data" action="/">
+    <input type="file" name="file">
+</form>
+</body>
+</html>

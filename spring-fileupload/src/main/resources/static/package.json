@@ -1,0 +1,13 @@
+{
+  "name": "spring-upload",
+  "version": "1.0.0",
+  "description": "Spring upload",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bui Hong Ha",
+  "license": "ISC",
+  "dependencies": {
+    "dropzone": "^4.3.0"
+  }
+}

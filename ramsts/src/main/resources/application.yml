@@ -1,0 +1,8 @@
+spring:
+  thymeleaf:
+    templateResolverOrder: 0
+    suffix: .html
+    prefix: classpath:/templates/
+    cacheable: false
+    mode: HTML
+    encoding: UTF-8

@@ -1,0 +1,17 @@
+{
+  "name": "ramsts",
+  "version": "1.0.0",
+  "description": "RAM STS demo",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bui Hong Ha",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "dropzone": "^4.3.0",
+    "jquery": "^3.1.1",
+    "jstree": "^3.3.3",
+    "vue": "^2.2.1"
+  }
+}

@@ -1,0 +1,69 @@
+group 'playwithrx'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        springBootVersion = "2.0.2.RELEASE"
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("com.moowork.gradle:gradle-node-plugin:1.2.0")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.moowork.node'
+
+jar {
+    baseName = "playwithrx"
+    version = "1.0-SNAPSHOT"
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://repo.spring.io/libs-release'
+    }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-websocket")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4")
+
+    compile("org.webjars:webjars-locator:0.30")
+    compile("org.webjars:bootstrap:4.1.0")
+    compile 'org.webjars:jquery:3.3.1'
+    compile("org.apache.solr:solr-solrj:7.3.0")
+    compile("org.postgresql:postgresql:42.2.1")
+
+    compile "io.reactivex.rxjava2:rxjava:2.1.12"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task buildStatic(type: NpmTask) {
+    workingDir = file("$rootDir/src/main/frontend")
+    args = ["run", "build"]
+}
+
+clean {
+    delete "$rootDir/src/main/resources/static/app.js"
+}

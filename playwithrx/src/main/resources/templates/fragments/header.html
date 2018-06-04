@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+  <!-- header -->
+  <header class="app-header" th:fragment="header" id="app">
+    <!-- top-bar -->
+    <div class="top-bar">
+      <!-- top-bar-brand -->
+      <div class="top-bar-brand">
+        <h4 class="text-uppercase">Smile</h4>
+      </div>
+      <!-- end top-bar-brand -->
+      <!-- top-bar-list menu items when login -->
+      <div class="top-bar-list" sec:authorize="isAuthenticated()">
+        <!-- top-bar-item-full search box-->
+        <div class="top-bar-item top-bar-item-full">
+          <div class="top-bar-search">
+            <div class="input-group input-group-search">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-caret-right"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" aria-label="Search" placeholder="Search" v-model="query" @keydown="query_OnUpdated">
+            </div>
+          </div>
+          <!-- Nav bar -->
+          <ul class="header-nav nav">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/}" th:text="#{header.menu.admin}"></a>
+            </li>
+          </ul>
+        </div>
+        <!-- End top-bar-item-full search box-->
+        <!-- top-bar-item-right search box-->
+        <div class="top-bar-item top-bar-item-right">
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <button class="btn-account d-none d-md-flex dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="account-summary">
+                <span class="account-name" sec:authentication="name"></span>
+                <!--<span class="account-name" sec:authentication="principal.authorities"></span>-->
+              </span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">
+                <i class="dropdown-icon fa fa-user"></i>
+                <span th:text="#{header.account.profile}"></span>
+              </a>
+              <div class="dropdown-item">
+                <i class="dropdown-icon fas fa-sign-out-alt"></i>
+                <form method="POST" th:action="@{/logout}" class="d-inline">
+                  <input type="submit" th:value="#{header.account.signout}">
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- End Dropdown -->
+        </div>
+      </div>
+      <!-- End top-bar-list menu items when login -->
+      <!-- top-bar-list menu items when not login -->
+      <!--<div class="top-bar-list" sec:authorize="isAnonymous()">
+        <div class="top-bar-item top-bar-item-right">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="/login" th:text="#{login.text}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/registration" th:text="#{registration.text}">Register</a>
+            </li>
+          </ul>
+        </div>
+      </div>-->
+      <!-- end top-bar-list menu items when not login -->
+    </div>
+    <!-- end top-bar -->
+  </header>
+  <!-- end header -->
+
+</body>
+
+</html>

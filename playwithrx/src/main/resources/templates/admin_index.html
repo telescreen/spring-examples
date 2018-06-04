@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Home</title>
+  <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link rel='stylesheet' href='/static/css/main.css'>
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<aside class="app-aside">
+  <div th:replace="~{fragments/admin_app-aside::menu}"></div>
+</aside>
+<script src="/static/app.js"></script>
+</body>
+</html>

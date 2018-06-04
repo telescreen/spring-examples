@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <section class="app-aside" th:fragment="menu">
+    <div class="aside-content">
+      <section class="aside-menu">
+        <nav class="stacked-menu">
+          <!-- ul .menu -->
+          <ul class="menu">
+            <!-- .menu-header -->
+            <li class="menu-header">Apps</li>
+            <!-- end menu-header -->
+            <!-- .menu-header -->
+            <li class="menu-header">User Permissions</li>
+            <!-- end menu-header -->
+            <!-- .menu-item -->
+            <li class="menu-item has-child">
+              <!-- menu-link -->
+              <a href="#" class="menu-link collapsed"
+                 data-toggle="collapse" data-target="#users-submenu" aria-expanded="false">
+                <span class="menu-icon"><i class="fas fa-users-cog"></i></span>
+                <span class="menu-text">Users</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+              <!-- end menu-link -->
+              <!-- collapsable submenu -->
+              <ul class="nav collapse" id="users-submenu">
+                <li class="menu-item"><a th:href="@{/admin/users/}" class="menu-link">List all users</a></li>
+                <li class="menu-item"><a th:href="@{/admin/users/create}" class="menu-link">Create user</a></li>
+              </ul>
+              <!-- end collapsable submenu -->
+            </li>
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <span class="menu-icon"><i class="fas fa-user-lock"></i></span>
+                <span class="menu-text">Permissions</span>
+              </a>
+            </li>
+            <!-- end menu-item -->
+          </ul>
+          <!-- end ul .menu -->
+        </nav>
+      </section>
+    </div>
+  </section>
+</body>
+</html>

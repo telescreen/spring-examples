@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Home</title>
+  <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link rel='stylesheet' href='/static/css/main.css'>
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<aside class="app-aside">
+  <div th:replace="~{fragments/admin_app-aside::menu}"></div>
+</aside>
+<!-- .app-main -->
+<main class="app-main">
+  <div class="wrapper">
+    <div class="page">
+      <div class="page-inner">
+        <header class="page-title-bar">
+          <p class="lead">
+            <span class="font-weight-bold">All Users</span>
+            <span class="d-block text-muted">List of users with their permissions</span>
+          </p>
+        </header>
+        <!-- .page-section -->
+        <div class="page-section">
+          <!-- .section-block -->
+          <div class="section-block">
+            <!-- .metric-row -->
+            <div class="metric-row metric-flush">
+              <div class="col-lg-3">
+                <!-- .metric-column -->
+                <div class="col">
+                  <!-- .metric -->
+                  <div class="border rounded-left metric text-center">
+                    <h2 class="metric-label">Number of Users</h2>
+                    <p class="metric-value h3">
+                      <i class="fa fa-users"></i>
+                      <span class="value" th:text="${numberOfUsers}"></span>
+                    </p>
+                  </div>
+                  <!-- end .metric -->
+                </div>
+                <!-- end .metric-column -->
+              </div>
+            </div>
+            <!-- end .metric-row -->
+          </div>
+          <!-- end .section-block -->
+        </div>
+        <!-- end .page-section -->
+        <!-- .page-section -->
+        <div class="page-section">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th colspan="2">Enabled</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="user: ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td><span th:each="role: ${user.roles}" th:text="${role.name}"></span></td>
+                <td th:text="${user.enabled}"></td>
+                <td class="align-middle text-right">
+                  <a th:href="@{'/admin/users/edit/' + ${user.id}}" class="btn btn-sm btn-outline-secondary">
+                    <i class="fa fa-pencil-alt"></i>
+                    <span class="sr-only">Edit</span>
+                  </a>
+                  <!-- Delete user form -->
+                  <form method="POST" action="@{/admin/users/delete}" class="d-inline">
+                    <input type="hidden" name="userId" th:value="${user.id}">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">
+                      <i class="fa fa-trash-alt"></i>
+                    </button>
+                  </form>
+                  <!-- End delete user form -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <ul class="pagination">
+            <li th:class="${page.number eq 0} ? 'disabled' : ''">
+              <a th:if="${not page.firstPage}" th:href="@{${'/users'}(page=${page.number-1})}">Previous</a>
+              <a th:if="${page.firstPage}" href="javascript:void(0);">Previous</a>
+            </li>
+
+            <li th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}" th:class="${page.number eq pageNo}? 'active' : ''">
+              <a th:if="${page.number eq pageNo}" href="javascript:void(0);">
+                <span th:text="${pageNo + 1}"></span>
+              </a>
+              <a th:if="${not (page.number  eq pageNo)}" th:href="@{${'/users'}(page=${pageNo})}">
+                <span th:text="${pageNo + 1}"></span>
+              </a>
+
+            </li>
+            <li th:class="${page.number + 1 ge page.totalPages} ? 'disabled' : ''">
+              <a th:if="${not page.lastPage}" th:href="@{${'/users'}(page=${page.number+1})}">Next</a>
+              <a th:if="${page.lastPage}" href="javascript:void(0);">Next</a>
+            </li>
+          </ul>
+        </div>
+        <!-- end .page-section -->
+      </div>
+    </div>
+  </div>
+</main>
+<!-- end s.app-main -->
+<script src="/static/app.js"></script>
+</body>
+</html>

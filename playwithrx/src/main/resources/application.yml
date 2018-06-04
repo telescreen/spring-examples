@@ -1,0 +1,32 @@
+spring:
+  profile: development
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+    mode: HTML
+    suffix: .html
+    encoding: UTF-8
+  datasource:
+    platform: postgresql
+    url: jdbc:postgresql://localhost:5432/playwithrx
+    username: playwithrx
+    password: playwithrx
+    initialization-mode: always
+    continue-on-error: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
+
+solr:
+  solrUrl: http://localhost:8983/solr
+  connectionTimeout: 10000
+  socketTimeout: 60000
+
+playwithrx:
+  numberUsersPerPage: 20
+
+logging:
+  level:
+    com.buiha: DEBUG
+    org.hibernate: ERROR

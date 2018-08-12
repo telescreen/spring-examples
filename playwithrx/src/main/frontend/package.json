@@ -1,37 +1,37 @@
 {
-  "name": "playwithrx",
-  "version": "1.0.0",
-  "description": "play with rxjava",
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "webpack -p"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/telescreen/twitterapp"
-  },
-  "author": "Bui Hong Ha",
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "css-loader": "^0.28.10",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.7",
-    "ts-loader": "^4.0.0",
-    "typescript": "^2.7.2",
-    "vue-class-component": "^6.2.0",
-    "vue-loader": "^14.1.1",
-    "vue-property-decorator": "^6.0.0",
-    "vue-template-compiler": "^2.5.13",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9",
-    "@stomp/stompjs": "^4.0.2",
-    "@types/sockjs-client": "^1.1.0"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "deploy": ""
   },
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "font-awesome": "^4.7.0",
-    "jquery": "3.3.1",
-    "typeahead": "0.2.2",
-    "vue": "^2.5.13",
-    "websocket": "^1.0.25"
-  }
+    "@stomp/stompjs": "^4.0.6",
+    "@types/jquery": "^3.3.4",
+    "@types/js-cookie": "^2.1.0",
+    "jquery": "^3.3.1",
+    "js-cookie": "^2.2.0",
+    "vue": "^2.5.16",
+    "vue-class-component": "^6.0.0",
+    "vue-i18n": "^7.8.0",
+    "vue-property-decorator": "^6.0.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "websocket": "^1.0.26"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-typescript": "^3.0.0-beta.15",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "rxjs": "^6.2.1",
+    "rxjs-compat": "^6.2.1",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

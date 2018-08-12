@@ -63,7 +63,3 @@ task buildStatic(type: NpmTask) {
     workingDir = file("$rootDir/src/main/frontend")
     args = ["run", "build"]
 }
-
-clean {
-    delete "$rootDir/src/main/resources/static/app.js"
-}

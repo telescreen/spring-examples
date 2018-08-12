@@ -1,7 +1,7 @@
 package com.buiha.controllers;
 
 import com.buiha.models.User;
-import com.buiha.models.UserRepository;
+import com.buiha.service.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String listUsers(@PathVariable("page") int page,
+    public String listUsers(@RequestParam(value = "page", defaultValue = "0") int page,
                             Model model) {
+        //TODO (tal): Include a validator for page
+
         long numberOfUsers = userRepository.count();
         Page<User> users = userRepository.findAll(PageRequest.of(page, numberUsersPerPage));
 
@@ -42,13 +44,19 @@ public class AdminController {
             for(User user: users) {
                 logger.debug(user.toString());
             }
-            logger.debug(String.valueOf(users.getTotalPages()));
+            logger.debug("Current pages: " + page);
+            logger.debug("Total pages: " + String.valueOf(users.getTotalPages()));
         }
 
         model.addAttribute("users", users);
         model.addAttribute("numberOfUsers", numberOfUsers);
         model.addAttribute("page", page);
         return "admin_users";
+    }
+
+    @RequestMapping(value = "/users/create", method = RequestMethod.GET)
+    public String createUser(Model model) {
+        return "none";
     }
 
     @RequestMapping(value = "/users/edit/{id}", method = RequestMethod.GET)

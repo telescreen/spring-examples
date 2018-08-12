@@ -1,6 +1,6 @@
 package com.buiha.forms;
 
-import com.buiha.models.UserRepository;
+import com.buiha.service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

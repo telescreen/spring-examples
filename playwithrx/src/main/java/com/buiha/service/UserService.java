@@ -2,11 +2,8 @@ package com.buiha.service;
 
 import com.buiha.forms.UserForm;
 import com.buiha.models.User;
-import com.buiha.models.UserRepository;
 import com.buiha.models.Role;
-import com.buiha.models.RoleRepository;
 import com.buiha.models.Privilege;
-import com.buiha.models.PrivilegeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +44,6 @@ public class UserService implements UserDetailsService {
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.readByUsername(username);
-
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(), user.isEnabled(),
                 true, true, true,
@@ -92,7 +88,6 @@ public class UserService implements UserDetailsService {
     }
 
     private Set<String> getPrivileges(Set<Role> roles) {
-
         Set<String> privileges = new LinkedHashSet<>();
         Set<Privilege> collection = new LinkedHashSet<>();
         for (Role role : roles) {

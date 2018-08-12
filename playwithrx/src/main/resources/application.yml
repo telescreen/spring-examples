@@ -30,3 +30,5 @@ logging:
   level:
     com.buiha: DEBUG
     org.hibernate: ERROR
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG

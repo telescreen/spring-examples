@@ -41,7 +41,7 @@ class StompService {
 
   public messages: Subject<Stomp.Message>;
 
-  private timer?: number;
+  private timer?: NodeJS.Timer;
 
   constructor() {
     this.messages = new Subject<Stomp.Message>();

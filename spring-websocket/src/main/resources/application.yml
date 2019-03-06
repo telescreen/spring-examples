@@ -1,0 +1,4 @@
+spring:
+  redis:
+    host: stark
+    port: 6379
